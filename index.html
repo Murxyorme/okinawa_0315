@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>沖繩 5 日遊</title>
-    <meta name="description" content="沖繩 5 日遊一頁式行程卡，含基本資訊、注意事項、緊急文字包與地圖。" />
+    <meta name="description" content="沖繩 5 日遊一頁式行程卡，含基本資訊、五天行程、注意事項、緊急文字包與地圖。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,11 +14,7 @@
     <style>
       :root {
         --ink: #1f1c17;
-        --paper: #f7f2e8;
-        --paper-deep: #e8dbc7;
         --accent: #1f5d8f;
-        --accent-soft: #f0b64a;
-        --line: #00000022;
       }
 
       * {
@@ -148,6 +144,132 @@
         margin: 18px 0;
       }
 
+      .trip-intro {
+        margin: 0 0 14px;
+        font-weight: 700;
+      }
+
+      .trip-days {
+        display: grid;
+        gap: 12px;
+      }
+
+      .day-card {
+        border: 2px solid #00000017;
+        border-radius: 18px;
+        background: #fffaf2;
+        overflow: hidden;
+      }
+
+      .day-card summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: center;
+        background: linear-gradient(95deg, #f1e3c8, #f8efdf);
+      }
+
+      .day-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .day-num {
+        font-family: "Yusei Magic", sans-serif;
+        font-size: 1.2rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #1f5d8f;
+        color: #fff;
+      }
+
+      .day-title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .day-sub {
+        margin: 2px 0 0;
+        font-size: 0.96rem;
+        opacity: 0.86;
+      }
+
+      .day-body {
+        padding: 10px 14px 16px;
+      }
+
+      .timeline {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .slot {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 10px;
+      }
+
+      .slot time {
+        display: inline-block;
+        font-family: "Yusei Magic", sans-serif;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: #1f5d8f;
+        border-radius: 999px;
+        text-align: center;
+        height: fit-content;
+        padding: 4px 8px;
+        background: #ecf5ff;
+      }
+
+      .slot strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .slot p {
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .links {
+        margin-top: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .links a {
+        display: inline-block;
+        font-size: 0.9rem;
+        color: #0f4f7b;
+        text-decoration: none;
+        border: 1px solid #0f4f7b2b;
+        border-radius: 999px;
+        padding: 2px 8px;
+        background: #f3f9ff;
+      }
+
+      .links a:hover {
+        background: #e5f2ff;
+      }
+
+      .hint {
+        margin: 10px 0 0;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #fff3d5;
+        border: 1px dashed #c68f21;
+        font-size: 0.96rem;
+        font-weight: 700;
+      }
+
       .notes {
         list-style: none;
         margin: 0;
@@ -223,7 +345,7 @@
         position: fixed;
         inset: auto 50% 16px auto;
         transform: translateX(50%);
-        width: min(680px, calc(100vw - 22px));
+        width: min(760px, calc(100vw - 22px));
         background: #fff9f2f0;
         backdrop-filter: blur(8px);
         border: 1px solid #00000016;
@@ -345,12 +467,32 @@
           grid-template-columns: 1fr;
         }
 
+        .slot {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .slot time {
+          width: fit-content;
+        }
+
         .notes li {
           font-size: 1.04rem;
         }
 
         .em-text {
           font-size: 1.06rem;
+        }
+
+        .dock {
+          width: calc(100vw - 14px);
+          padding: 6px;
+          gap: 4px;
+        }
+
+        .dock button {
+          padding: 8px 4px;
+          font-size: 0.88rem;
         }
       }
     </style>
@@ -367,6 +509,7 @@
           <p>03/15 (日) - 03/19 (四)</p>
           <div class="quick">
             <button data-jump="basic">基本資訊</button>
+            <button data-jump="itinerary">五天行程</button>
             <button data-jump="notes">注意事項</button>
             <button data-jump="emergency">緊急文字包</button>
             <button data-jump="map">地圖</button>
@@ -403,6 +546,401 @@
             <p>+81 98-894-8588</p>
             <p>日本沖繩縣那霸市おもろまち 1 丁目 2 番 25 号</p>
           </div>
+        </div>
+      </section>
+
+      <section class="panel section" id="itinerary">
+        <h2>五天行程</h2>
+        <p class="trip-intro">點開每日行程，所有地點都可直接點地圖。</p>
+        <div class="trip-days">
+          <details class="day-card" open>
+            <summary>
+              <span class="day-num">D1</span>
+              <div>
+                <p class="day-title">3/15（日）出發</p>
+                <p class="day-sub">機場到飯店、晚餐、可選國際通與 DFS 免稅店</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>15:20</time>
+                  <div>
+                    <strong>TNN 台南機場起飛（IT796）</strong>
+                    <p>上飛機前先吃東西。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>17:50</time>
+                  <div>
+                    <strong>OKA 沖繩那霸機場抵達</strong>
+                    <p>出關後先去飯店，並在機場先買 OKIKA。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:10</time>
+                  <div>
+                    <strong>YUI RAIL：那霸機場 → 歌町（おもろまち）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/3GNJwWA4kuo9rXKY8" target="_blank" rel="noreferrer">單軌電車線</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:40</time>
+                  <div>
+                    <strong>步行到飯店（約 9 分鐘）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">那霸新都心飯店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>19:20</time>
+                  <div>
+                    <strong>晚餐：舞天 本店</strong>
+                    <p>可吃蕎麥麵、天婦羅、燒烤、烏龍麵、餃子。</p>
+                    <p>吃看看：ゴヤーチャンプル、海ブドウ、泡盛（あわもり）。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/LxpiEJykJZ77SkqV6" target="_blank" rel="noreferrer">舞天 本店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>20:30</time>
+                  <div>
+                    <strong>可選：國際通</strong>
+                    <p>牧志駅下車，約 310 公尺。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/c3fajEKuNjgSEWNx9" target="_blank" rel="noreferrer">國際通</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00-20:00</time>
+                  <div>
+                    <strong>可選：DFS 免稅店</strong>
+                    <p>下車後可逛，但以精品為主、沒有吃的。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D2</span>
+              <div>
+                <p class="day-title">3/16（一）渡嘉敷島觀光＆賞鯨</p>
+                <p class="day-sub">旭橋集合出海，傍晚回市區晚餐</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>08:00</time>
+                  <div>
+                    <strong>出發：飯店 → 旭橋</strong>
+                    <p>搭電車約 21 分鐘。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>08:40</time>
+                  <div>
+                    <strong>搭計程車到三重城港</strong>
+                    <p>車程約 6 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/b1mEFJiiebbnPMYe7" target="_blank" rel="noreferrer">三重城港集合點</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:15</time>
+                  <div>
+                    <strong>候船室集合</strong>
+                    <p>準備出航。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>出航</strong>
+                    <p>渡嘉敷島行程開始。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:45</time>
+                  <div>
+                    <strong>阿波連海灘</strong>
+                    <p>停留約 2 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/52BVHRLhMPtkWHmt6" target="_blank" rel="noreferrer">阿波連海灘</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:00</time>
+                  <div>
+                    <strong>慶良間諸島國立公園</strong>
+                    <p>停留約 2 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/i5rCngE6yLQbu1fR8" target="_blank" rel="noreferrer">慶良間諸島</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>15:00</time>
+                  <div>
+                    <strong>回程返回三重城港</strong>
+                    <p>16:30-17:00 搭計程車回旭橋。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:00</time>
+                  <div>
+                    <strong>晚餐：島しゃぶしゃぶ NAKAMA</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/Ko3V2e9wT3B9m4bGA" target="_blank" rel="noreferrer">NAKAMA</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <p class="hint">Klook / 船班代號：#13560。</p>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D3</span>
+              <div>
+                <p class="day-title">3/17（二）Hip Hop Bus 一日遊</p>
+                <p class="day-sub">古宇利島、萬座毛、水族館等景點</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>08:20</time>
+                  <div>
+                    <strong>飯店出發</strong>
+                    <p>走路約 5 分鐘到集合點。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>08:30</time>
+                  <div>
+                    <strong>洋服の青山對面等 Klook</strong>
+                    <p>在牆壁旁邊等。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/qQFWA6E3BhKXtSr16" target="_blank" rel="noreferrer">集合點</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>名護鳳梨園</strong>
+                    <p>停留約 1 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/ocMnCJ8iTMB9CipL6" target="_blank" rel="noreferrer">名護鳳梨園</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>11:25</time>
+                  <div>
+                    <strong>古宇利島</strong>
+                    <p>停留約 25 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/VnnRuaPPw9gVJ8wr7" target="_blank" rel="noreferrer">古宇利島</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>12:20</time>
+                  <div>
+                    <strong>沖繩美麗海水族館</strong>
+                    <p>停留約 2.5 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/gdVYhg1odWafpLv76" target="_blank" rel="noreferrer">美麗海水族館</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>16:00</time>
+                  <div>
+                    <strong>禦石禦殿恩納店</strong>
+                    <p>停留約 25 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/2kJeSCTkRq5RJWiYA" target="_blank" rel="noreferrer">禦石禦殿恩納店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>16:30</time>
+                  <div>
+                    <strong>萬座毛</strong>
+                    <p>停留約 30 分鐘後回程。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/VimqEpzn4EteeSW48" target="_blank" rel="noreferrer">萬座毛</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>17:50</time>
+                  <div>
+                    <strong>可選：下車回飯店 / 直接吃晚餐</strong>
+                    <p>建議在縣民廣場附近下車，走去吃滷肉。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:15</time>
+                  <div>
+                    <strong>晚餐：らふ亭（ラフテー）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/CgcAFgb3cCX7CWg67" target="_blank" rel="noreferrer">らふ亭</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D4</span>
+              <div>
+                <p class="day-title">3/18（三）ガンガラーの谷 + 牧志市場</p>
+                <p class="day-sub">巴士到玉泉洞前，下午回市區逛市場</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>09:00</time>
+                  <div>
+                    <strong>飯店出發 → 旭橋</strong>
+                    <p>先買食物帶著，ガンガラーの谷附近吃的少。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>旭橋走到那覇バスターミナル（Platform 9）</strong>
+                    <p>走路約 5 分鐘。OKIKA 可搭車。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/rFbyP7SHhX1w9yfWA" target="_blank" rel="noreferrer">巴士總站</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>搭 83【玉泉洞線】前往玉泉洞前</strong>
+                    <p>不宜搭 54【前川線】；車程約 1 小時。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>11:10</time>
+                  <div>
+                    <strong>洞穴咖啡（ケイブカフェ）</strong>
+                    <p>500 日圓可喝四種特色飲料。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/qH8YbvdYnqc8RZGn8" target="_blank" rel="noreferrer">洞穴咖啡</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>12:00</time>
+                  <div>
+                    <strong>ガンガラーの谷導覽開始</strong>
+                    <p>預約代碼：#5DYU0VVH。不可遲到。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/rfoqbe8Q4yTbyQKCA" target="_blank" rel="noreferrer">ガンガラーの谷</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:30</time>
+                  <div>
+                    <strong>導覽結束（預估）</strong>
+                    <p>13:55 從玉泉洞前搭 83 回市區。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/KdazHAEX93Ls4FgW7" target="_blank" rel="noreferrer">玉泉洞前車站</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>14:45</time>
+                  <div>
+                    <strong>回到市區後逛國際通、第一牧志公設市場</strong>
+                    <p>國際通走到市場約 9 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/c3fajEKuNjgSEWNx9" target="_blank" rel="noreferrer">國際通</a>
+                      <a href="https://maps.app.goo.gl/gdPJyw9GFsVHmNxt6" target="_blank" rel="noreferrer">第一牧志公設市場</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <p class="hint">
+                市場建議：一樓買海鮮帶去二樓煮。可找夜光貝、伊勢海老、赤仁石斑（アカジンミーバイ）、海葡萄、花生豆腐、沙翁。
+              </p>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D5</span>
+              <div>
+                <p class="day-title">3/19（四）回家</p>
+                <p class="day-sub">Check out、機場午餐、搭 IT797 回台南</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>09:00</time>
+                  <div>
+                    <strong>飯店 Check out</strong>
+                    <p>那霸新都心飯店出發。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>抵達那霸機場</strong>
+                    <p>走去車站約 9 分鐘，單軌約 30 分鐘。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>午餐：沖繩飯糰</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/L3fFPgNZwvRf36ym8" target="_blank" rel="noreferrer">沖繩飯糰</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:30</time>
+                  <div>
+                    <strong>IT797 起飛</strong>
+                    <p>先託運：媽媽 25 公斤行李。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>14:20</time>
+                  <div>
+                    <strong>TNN 台南機場抵達</strong>
+                    <p>行程結束。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -467,6 +1005,7 @@
     <nav class="dock" aria-label="章節導覽">
       <button data-jump="home" class="active">首頁</button>
       <button data-jump="basic">資訊</button>
+      <button data-jump="itinerary">行程</button>
       <button data-jump="notes">注意</button>
       <button data-jump="emergency">緊急</button>
       <button data-jump="map">地圖</button>
