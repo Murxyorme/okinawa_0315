@@ -1,0 +1,1079 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>沖繩 5 日遊</title>
+    <meta name="description" content="沖繩 5 日遊一頁式行程卡，含基本資訊、五天行程、注意事項、緊急文字包與地圖。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1f1c17;
+        --accent: #1f5d8f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 18% 15%, #ffffffb8, #0000 35%),
+          radial-gradient(circle at 92% 88%, #f8e6cbb0, #0000 33%),
+          repeating-linear-gradient(45deg, #ffffff10 0 2px, #0000 2px 6px),
+          linear-gradient(170deg, #f2ede2, #efe5d2 55%, #ebdfca);
+      }
+
+      .container {
+        width: min(960px, 92vw);
+        margin-inline: auto;
+      }
+
+      .panel {
+        position: relative;
+        margin: 22px auto;
+        border-radius: 28px;
+        background: linear-gradient(180deg, #fcf9f2 0%, #f4e8d4 100%);
+        border: 2px solid #ffffffc4;
+        box-shadow: 0 14px 30px #412f181f;
+        overflow: hidden;
+      }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 120px 24px 100px;
+      }
+
+      .hero h1 {
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: clamp(3rem, 9vw, 6.2rem);
+        line-height: 1;
+        margin: 0;
+      }
+
+      .hero p {
+        font-size: clamp(1.2rem, 3.8vw, 2rem);
+        margin: 18px 0 26px;
+        font-weight: 700;
+      }
+
+      .quick {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .quick button,
+      .actions button,
+      .actions a {
+        appearance: none;
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        color: #fff;
+        background: var(--accent);
+        text-decoration: none;
+        transition: transform 0.18s ease, opacity 0.18s ease;
+      }
+
+      .quick button:hover,
+      .actions button:hover,
+      .actions a:hover {
+        transform: translateY(-2px);
+        opacity: 0.92;
+      }
+
+      .section {
+        padding: 28px;
+      }
+
+      .section h2 {
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: clamp(2rem, 5.4vw, 3.2rem);
+        margin: 6px 0 16px;
+      }
+
+      .paper {
+        background: linear-gradient(180deg, #ccb083, #c4a777);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: inset 0 0 0 2px #00000018;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .item h3 {
+        margin: 0 0 8px;
+      }
+
+      .item p {
+        margin: 4px 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .divider {
+        border: 0;
+        border-top: 2px dashed #00000075;
+        margin: 18px 0;
+      }
+
+      .trip-intro {
+        margin: 0 0 14px;
+        font-weight: 700;
+      }
+
+      .trip-days {
+        display: grid;
+        gap: 12px;
+      }
+
+      .day-card {
+        border: 2px solid #00000017;
+        border-radius: 18px;
+        background: #fffaf2;
+        overflow: hidden;
+      }
+
+      .day-card summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: center;
+        background: linear-gradient(95deg, #f1e3c8, #f8efdf);
+      }
+
+      .day-card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .day-num {
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: 1.2rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: #1f5d8f;
+        color: #fff;
+      }
+
+      .day-title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 900;
+      }
+
+      .day-sub {
+        margin: 2px 0 0;
+        font-size: 0.96rem;
+        opacity: 0.86;
+      }
+
+      .day-body {
+        padding: 10px 14px 16px;
+      }
+
+      .timeline {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .slot {
+        display: grid;
+        grid-template-columns: 84px 1fr;
+        gap: 10px;
+      }
+
+      .slot time {
+        display: inline-block;
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: #1f5d8f;
+        border-radius: 999px;
+        text-align: center;
+        height: fit-content;
+        padding: 4px 8px;
+        background: #ecf5ff;
+      }
+
+      .slot strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .slot p {
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .links {
+        margin-top: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .links a {
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: #ffffff;
+        text-decoration: none;
+        border: 1px solid #0f4f7b2b;
+        border-radius: 999px;
+        padding: 2px 8px;
+        background: #74c295;
+      }
+
+      .links a::before {
+        content: "📍 ";
+      }
+
+      .links a:hover {
+        background: #67b886;
+      }
+
+      .hint {
+        margin: 10px 0 0;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #fff3d5;
+        border: 1px dashed #c68f21;
+        font-size: 0.96rem;
+        font-weight: 700;
+      }
+
+      .notes {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .notes li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: start;
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      .star {
+        color: #f4bd3a;
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+
+      .em-box {
+        background: #f8f8f8;
+        border: 2px solid #00000018;
+        border-radius: 20px;
+        padding: 18px;
+      }
+
+      .em-box h3 {
+        margin: 0 0 10px;
+        font-family: "Noto Sans TC", "Source Han Sans TC", "Source Han Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: 1.8rem;
+      }
+
+      .em-text {
+        margin: 0 0 14px;
+        font-weight: 700;
+        font-size: 1.16rem;
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .actions button {
+        background: #2f6c44;
+      }
+
+      .actions a {
+        background: #bc4b2a;
+      }
+
+      .map-frame {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 2px solid #00000020;
+        box-shadow: 0 8px 24px #0000001a;
+      }
+
+      .map-frame iframe {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border: 0;
+        display: block;
+      }
+
+      .dock {
+        position: fixed;
+        inset: auto 50% 16px auto;
+        transform: translateX(50%);
+        width: min(760px, calc(100vw - 22px));
+        background: #fff9f2f0;
+        backdrop-filter: blur(8px);
+        border: 1px solid #00000016;
+        border-radius: 999px;
+        box-shadow: 0 10px 22px #00000020;
+        padding: 8px;
+        display: flex;
+        gap: 6px;
+        z-index: 10;
+      }
+
+      .dock button {
+        flex: 1;
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 8px;
+        background: transparent;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .dock button.active {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      #topBtn {
+        position: fixed;
+        right: 16px;
+        bottom: 94px;
+        width: 48px;
+        height: 48px;
+        border: 0;
+        border-radius: 999px;
+        background: #1f1c17;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 10;
+      }
+
+      #topBtn.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .sticker {
+        position: absolute;
+        font-size: clamp(1.4rem, 5vw, 2.6rem);
+        opacity: 0.92;
+        animation: drift 6s ease-in-out infinite alternate;
+      }
+
+      .s1 {
+        top: 18px;
+        left: 22px;
+      }
+
+      .s2 {
+        top: 36px;
+        right: 28px;
+      }
+
+      .s3 {
+        bottom: 110px;
+        left: 16px;
+      }
+
+      .s4 {
+        bottom: 90px;
+        right: 24px;
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 145px;
+        transform: translateX(-50%);
+        background: #111;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        z-index: 20;
+      }
+
+      .toast.show {
+        opacity: 1;
+      }
+
+      footer {
+        text-align: center;
+        margin: 28px 0 110px;
+        color: #3f3830;
+        font-weight: 700;
+      }
+
+      @keyframes drift {
+        from {
+          transform: translateY(0) rotate(-3deg);
+        }
+        to {
+          transform: translateY(8px) rotate(4deg);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .section {
+          padding: 20px;
+        }
+
+        .grid.cols-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .slot {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .slot time {
+          width: fit-content;
+        }
+
+        .notes li {
+          font-size: 1.04rem;
+        }
+
+        .em-text {
+          font-size: 1.06rem;
+        }
+
+        .dock {
+          width: calc(100vw - 14px);
+          padding: 6px;
+          gap: 4px;
+        }
+
+        .dock button {
+          padding: 8px 4px;
+          font-size: 0.88rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel hero" id="home">
+        <span class="sticker s1">✈️</span>
+        <span class="sticker s2">🧳</span>
+        <span class="sticker s3">🧭</span>
+        <span class="sticker s4">☕</span>
+        <div>
+          <h1>沖繩<br />5日遊</h1>
+          <p>03/15 (日) - 03/19 (四)</p>
+          <div class="quick">
+            <button data-jump="basic">基本資訊</button>
+            <button data-jump="itinerary">五天行程</button>
+            <button data-jump="notes">注意事項</button>
+            <button data-jump="emergency">緊急文字包</button>
+            <button data-jump="map">地圖</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section" id="basic">
+        <h2>基本資訊</h2>
+        <div class="paper">
+          <h3>航班 & 時間</h3>
+          <div class="grid cols-2">
+            <div class="item">
+              <h3>去程 台灣虎航 IT 796</h3>
+              <p>台南機場 → 沖繩那霸機場</p>
+              <p>15:20 → 17:50</p>
+            </div>
+            <div class="item">
+              <h3>回程 台灣虎航 IT 797</h3>
+              <p>沖繩那霸機場 → 台南機場</p>
+              <p>13:30 → 14:20</p>
+            </div>
+          </div>
+          <hr class="divider" />
+          <div class="item">
+            <h3>行李</h3>
+            <p>去程：爸爸的 25 KG</p>
+            <p>回程：媽媽的 25 KG（花花 10 公斤）</p>
+          </div>
+          <hr class="divider" />
+          <div class="item">
+            <h3>住宿</h3>
+            <p>NAHA 新都心 HOTEL</p>
+            <p>+81 98-894-8588</p>
+            <p>日本沖繩縣那霸市おもろまち 1 丁目 2 番 25 号</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section" id="itinerary">
+        <h2>五天行程</h2>
+        <p class="trip-intro">點開每日行程，所有地點都可直接點地圖。</p>
+        <div class="trip-days">
+          <details class="day-card" open>
+            <summary>
+              <span class="day-num">D1</span>
+              <div>
+                <p class="day-title">3/15（日）出發</p>
+                <p class="day-sub">機場到飯店、晚餐、可選國際通與 DFS 免稅店</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>15:20</time>
+                  <div>
+                    <strong>TNN 台南機場起飛（IT796）</strong>
+                    <p>上飛機前先吃東西。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>17:50</time>
+                  <div>
+                    <strong>OKA 沖繩那霸機場抵達</strong>
+                    <p>出關後先去飯店，並在機場先買 OKIKA。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:10</time>
+                  <div>
+                    <strong>YUI RAIL：那霸機場 → 歌町（おもろまち）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/3GNJwWA4kuo9rXKY8" target="_blank" rel="noreferrer">單軌電車線</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:40</time>
+                  <div>
+                    <strong>步行到飯店（約 9 分鐘）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">那霸新都心飯店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>19:20</time>
+                  <div>
+                    <strong>晚餐：舞天 本店</strong>
+                    <p>推薦：蕎麥麵、天婦羅、燒烤、烏龍麵、餃子、ゴヤーチャンプル、海ブドウ、泡盛（あわもり）。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/LxpiEJykJZ77SkqV6" target="_blank" rel="noreferrer">舞天 本店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>20:30</time>
+                  <div>
+                    <strong>可選：國際通</strong>
+                    <p>牧志駅下車，約 310 公尺。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/c3fajEKuNjgSEWNx9" target="_blank" rel="noreferrer">國際通</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00-20:00</time>
+                  <div>
+                    <strong>可選：DFS 免稅店</strong>
+                    <p>下車後可逛，但以精品為主、沒有吃的。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D2</span>
+              <div>
+                <p class="day-title">3/16（一）渡嘉敷島觀光＆賞鯨</p>
+                <p class="day-sub">旭橋集合出海，傍晚回市區晚餐</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>08:00</time>
+                  <div>
+                    <strong>出發：飯店 → 旭橋</strong>
+                    <p>搭電車約 21 分鐘。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>08:40</time>
+                  <div>
+                    <strong>搭計程車到三重城港</strong>
+                    <p>車程約 6 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/b1mEFJiiebbnPMYe7" target="_blank" rel="noreferrer">三重城港集合點</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:15</time>
+                  <div>
+                    <strong>候船室集合</strong>
+                    <p>準備出航。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>出航</strong>
+                    <p>渡嘉敷島行程開始。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:45</time>
+                  <div>
+                    <strong>阿波連海灘</strong>
+                    <p>停留約 2 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/52BVHRLhMPtkWHmt6" target="_blank" rel="noreferrer">阿波連海灘</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:00</time>
+                  <div>
+                    <strong>慶良間諸島國立公園</strong>
+                    <p>停留約 2 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/i5rCngE6yLQbu1fR8" target="_blank" rel="noreferrer">慶良間諸島</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>15:00</time>
+                  <div>
+                    <strong>回程返回三重城港</strong>
+                    <p>16:30-17:00 搭計程車回旭橋。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:00</time>
+                  <div>
+                    <strong>晚餐：島しゃぶしゃぶ NAKAMA</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/Ko3V2e9wT3B9m4bGA" target="_blank" rel="noreferrer">NAKAMA</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <p class="hint">Klook / 船班代號：#13560。</p>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D3</span>
+              <div>
+                <p class="day-title">3/17（二）Hip Hop Bus 一日遊</p>
+                <p class="day-sub">古宇利島、萬座毛、水族館等景點</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>08:20</time>
+                  <div>
+                    <strong>飯店出發</strong>
+                    <p>走路約 5 分鐘到集合點。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>08:30</time>
+                  <div>
+                    <strong>洋服の青山對面等 Klook</strong>
+                    <p>在牆壁旁邊等。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/qQFWA6E3BhKXtSr16" target="_blank" rel="noreferrer">集合點</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>名護鳳梨園</strong>
+                    <p>停留約 1 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/ocMnCJ8iTMB9CipL6" target="_blank" rel="noreferrer">名護鳳梨園</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>11:25</time>
+                  <div>
+                    <strong>古宇利島</strong>
+                    <p>停留約 25 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/VnnRuaPPw9gVJ8wr7" target="_blank" rel="noreferrer">古宇利島</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>12:20</time>
+                  <div>
+                    <strong>沖繩美麗海水族館</strong>
+                    <p>停留約 2.5 小時。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/gdVYhg1odWafpLv76" target="_blank" rel="noreferrer">美麗海水族館</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>16:00</time>
+                  <div>
+                    <strong>禦石禦殿恩納店</strong>
+                    <p>停留約 25 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/2kJeSCTkRq5RJWiYA" target="_blank" rel="noreferrer">禦石禦殿恩納店</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>16:30</time>
+                  <div>
+                    <strong>萬座毛</strong>
+                    <p>停留約 30 分鐘後回程。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/VimqEpzn4EteeSW48" target="_blank" rel="noreferrer">萬座毛</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>17:50</time>
+                  <div>
+                    <strong>可選：下車回飯店 / 直接吃晚餐</strong>
+                    <p>建議在縣民廣場附近下車，走去吃滷肉。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>18:15</time>
+                  <div>
+                    <strong>晚餐：らふ亭（ラフテー）</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/CgcAFgb3cCX7CWg67" target="_blank" rel="noreferrer">らふ亭</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D4</span>
+              <div>
+                <p class="day-title">3/18（三）ガンガラーの谷 + 牧志市場</p>
+                <p class="day-sub">巴士到玉泉洞前，下午回市區逛市場</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>09:00</time>
+                  <div>
+                    <strong>飯店出發 → 旭橋</strong>
+                    <p>先買食物帶著，ガンガラーの谷附近吃的少。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>旭橋走到那覇バスターミナル（Platform 9）</strong>
+                    <p>走路約 5 分鐘。OKIKA 可搭車。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/rFbyP7SHhX1w9yfWA" target="_blank" rel="noreferrer">巴士總站</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>搭 83【玉泉洞線】前往玉泉洞前</strong>
+                    <p>不宜搭 54【前川線】；車程約 1 小時。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>11:10</time>
+                  <div>
+                    <strong>洞穴咖啡（ケイブカフェ）</strong>
+                    <p>500 日圓可喝四種特色飲料。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/qH8YbvdYnqc8RZGn8" target="_blank" rel="noreferrer">洞穴咖啡</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>12:00</time>
+                  <div>
+                    <strong>ガンガラーの谷導覽開始</strong>
+                    <p>預約代碼：#5DYU0VVH。不可遲到。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/rfoqbe8Q4yTbyQKCA" target="_blank" rel="noreferrer">ガンガラーの谷</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:30</time>
+                  <div>
+                    <strong>導覽結束（預估）</strong>
+                    <p>13:55 從玉泉洞前搭 83 回市區。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/KdazHAEX93Ls4FgW7" target="_blank" rel="noreferrer">玉泉洞前車站</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>14:45</time>
+                  <div>
+                    <strong>回到市區後逛國際通、第一牧志公設市場</strong>
+                    <p>國際通走到市場約 9 分鐘。</p>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/c3fajEKuNjgSEWNx9" target="_blank" rel="noreferrer">國際通</a>
+                      <a href="https://maps.app.goo.gl/gdPJyw9GFsVHmNxt6" target="_blank" rel="noreferrer">第一牧志公設市場</a>
+                      <a href="https://maps.app.goo.gl/2mov7qZWaWodsYT19" target="_blank" rel="noreferrer">回飯店</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <p class="hint">
+                市場建議：一樓買海鮮帶去二樓煮。可找夜光貝、伊勢海老、赤仁石斑（アカジンミーバイ）、海葡萄、花生豆腐、沙翁。
+              </p>
+            </div>
+          </details>
+
+          <details class="day-card">
+            <summary>
+              <span class="day-num">D5</span>
+              <div>
+                <p class="day-title">3/19（四）回家</p>
+                <p class="day-sub">Check out、機場午餐、搭 IT797 回台南</p>
+              </div>
+            </summary>
+            <div class="day-body">
+              <ul class="timeline">
+                <li class="slot">
+                  <time>09:00</time>
+                  <div>
+                    <strong>飯店 Check out</strong>
+                    <p>那霸新都心飯店出發。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>09:30</time>
+                  <div>
+                    <strong>抵達那霸機場</strong>
+                    <p>走去車站約 9 分鐘，單軌約 30 分鐘。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>10:00</time>
+                  <div>
+                    <strong>午餐：沖繩飯糰</strong>
+                    <div class="links">
+                      <a href="https://maps.app.goo.gl/L3fFPgNZwvRf36ym8" target="_blank" rel="noreferrer">沖繩飯糰</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>13:30</time>
+                  <div>
+                    <strong>IT797 起飛</strong>
+                    <p>先託運：媽媽 25 公斤行李。</p>
+                  </div>
+                </li>
+                <li class="slot">
+                  <time>14:20</time>
+                  <div>
+                    <strong>TNN 台南機場抵達</strong>
+                    <p>行程結束。</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="panel section" id="notes">
+        <h2>注意事項</h2>
+        <ul class="notes">
+          <li><span class="star">★</span><span>護照、錢包、手機不離身。</span></li>
+          <li><span class="star">★</span><span>要乾淨，不可以隨便亂吐痰、亂丟垃圾。</span></li>
+          <li><span class="star">★</span><span>想上廁所或肚子餓，直接說就好。</span></li>
+          <li><span class="star">★</span><span>尊重並理解文化差異。</span></li>
+          <li><span class="star">★</span><span>想待久一點的地方就待久一點，不趕行程、不趕時間。</span></li>
+          <li><span class="star">★</span><span>放輕鬆出去玩，不需要緊張。</span></li>
+          <li><span class="star">★</span><span>用欣賞的眼光看風景，不需要批判，也不需要比較。</span></li>
+        </ul>
+      </section>
+
+      <section class="panel section" id="emergency">
+        <h2>緊急文字包</h2>
+        <div class="grid" style="gap: 14px">
+          <article class="em-box">
+            <h3>中文</h3>
+            <p class="em-text" id="zhText">
+              我是來自台灣的遊客，與家人走散了。我住的飯店是 NAHA 新都心 HOTEL，請問你知道怎麼回去嗎？
+            </p>
+            <div class="actions">
+              <button data-copy="zhText">複製中文</button>
+            </div>
+          </article>
+          <article class="em-box">
+            <h3>日文</h3>
+            <p class="em-text" id="jpText">
+              台湾から来た観光客ですが、家族とはぐれてしまいました。宿泊先は『那覇新都心ホテル（Naha Shintoshin
+              Hotel）』なのですが、戻り方を教えていただけませんか？
+            </p>
+            <div class="actions">
+              <button data-copy="jpText">複製日文</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel section" id="map">
+        <h2>地圖</h2>
+        <div class="map-frame">
+          <iframe
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=NAHA%E6%96%B0%E9%83%BD%E5%BF%83HOTEL&output=embed"
+            title="NAHA 新都心 HOTEL 地圖"
+          ></iframe>
+        </div>
+        <div class="actions" style="margin-top: 12px">
+          <a href="https://maps.google.com/?q=NAHA%E6%96%B0%E9%83%BD%E5%BF%83HOTEL" target="_blank" rel="noreferrer">開啟 Google Maps</a>
+          <a href="https://maps.google.com/?q=%E9%82%A3%E8%A6%87%E6%96%B0%E9%83%BD%E5%BF%83HOTEL&dirflg=w" target="_blank" rel="noreferrer">開啟步行路線</a>
+        </div>
+      </section>
+
+      <footer>大胖豆花旅行社🐈</footer>
+    </main>
+
+    <nav class="dock" aria-label="章節導覽">
+      <button data-jump="home" class="active">首頁</button>
+      <button data-jump="basic">資訊</button>
+      <button data-jump="itinerary">行程</button>
+      <button data-jump="notes">注意</button>
+      <button data-jump="emergency">緊急</button>
+      <button data-jump="map">地圖</button>
+    </nav>
+
+    <button id="topBtn" aria-label="回到頂端">↑</button>
+    <div class="toast" id="toast">已複製</div>
+
+    <script>
+      const jumpButtons = document.querySelectorAll("[data-jump]");
+      const copyButtons = document.querySelectorAll("[data-copy]");
+      const topBtn = document.getElementById("topBtn");
+      const toast = document.getElementById("toast");
+      const sections = [...document.querySelectorAll("main section")];
+      const dockButtons = [...document.querySelectorAll(".dock button")];
+
+      const jumpTo = (id) => {
+        const target = document.getElementById(id);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
+
+      jumpButtons.forEach((btn) => {
+        btn.addEventListener("click", () => jumpTo(btn.dataset.jump));
+      });
+
+      topBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      copyButtons.forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const textNode = document.getElementById(btn.dataset.copy);
+          if (!textNode) return;
+          try {
+            await navigator.clipboard.writeText(textNode.textContent.trim().replace(/\s+/g, " "));
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 1200);
+          } catch {
+            alert("複製失敗，請手動選取文字。");
+          }
+        });
+      });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            dockButtons.forEach((b) => b.classList.toggle("active", b.dataset.jump === id));
+          });
+        },
+        { threshold: 0.45 }
+      );
+
+      sections.forEach((section) => io.observe(section));
+
+      window.addEventListener("scroll", () => {
+        topBtn.classList.toggle("show", window.scrollY > 500);
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
